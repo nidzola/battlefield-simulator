@@ -22,7 +22,7 @@ class Army {
                         let squad1Attack = squad1.attack();
                         let squad2Attack = squad2.attack();
 
-                        if (squad1Attack > squad1Attack) {
+                        if (squad1Attack > squad2Attack) {
                             squad2.damage(squad1Attack);
                         } else {
                             squad1.damage(squad2Attack);
