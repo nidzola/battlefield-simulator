@@ -5,15 +5,21 @@ const Vehicle = require('./vehicle');
 class Squad {
     constructor(id) {
         this.units = [];
-        //TODO strategy
         this.id = "Squad:" + id;
-
+        this.totalEnergy = 0;
         this.init();
     }
 
     init() {
         for (let i = 0; i < Config.numberOfUnitsPerSquad; i++) {
             this.units.push(new Soldier());
+        }
+        this.buildSquadTotalEnergy();
+    }
+
+    buildSquadTotalEnergy() {
+        for (let unit of this.units) {
+            this.totalEnergy += unit.health;
         }
     }
 
@@ -47,6 +53,7 @@ class Squad {
 
         for (let unit of this.units) {
             unit.health = unit.health - damageAccumulation;
+            this.totalEnergy = this.totalEnergy - damageAccumulation;
             if (unit.health < 0) unit.health = 0;
         }
     }

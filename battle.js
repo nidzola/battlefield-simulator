@@ -41,4 +41,6 @@ class Battle {
 }
 
 let battle = new Battle();
-battle.fight();
+for (let i = 0; i < 50; i++) {
+    battle.fight();
+}
