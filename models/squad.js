@@ -1,12 +1,12 @@
 const Config = require('../config');
 const Soldier = require('./soldier');
+const Vehicle = require('./vehicle');
 
 class Squad {
     constructor(id) {
         this.units = [];
         //TODO strategy
         this.id = "Squad:" + id;
-        this.selectedStrategy = Config.attackStrategy;
 
         this.init();
     }
@@ -27,30 +27,27 @@ class Squad {
     }
 
     attack() {
-        //TODO
-        let activeUnitsLength = 0;
         let attackSum = 0;
         for (let unit of this.units) {
-            if (unit.isActive()) {
-                if (unit instanceof Soldier) {
-                    attackSum += unit.attack();
-                } else {
-                    attackSum += unit.attack();
-                }
-                activeUnitsLength++
+            if (unit instanceof Soldier) {
+                attackSum += unit.attack();
+            } else {
+                attackSum += unit.attack();
             }
         }
 
-        return attackSum / (activeUnitsLength > 0 ? activeUnitsLength : 1);
+        return attackSum / this.units.length;
     }
 
-    damage(damage) {
-        //TODO
+    damage() {
+        let damageAccumulation = 0;
         for (let unit of this.units) {
-            if (unit.isActive()) {
-                unit.health = unit.health - damage;
-                if (unit.health < 0) unit.health = 0;
-            }
+            damageAccumulation += unit.damage();
+        }
+
+        for (let unit of this.units) {
+            unit.health = unit.health - damageAccumulation;
+            if (unit.health < 0) unit.health = 0;
         }
     }
 

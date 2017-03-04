@@ -22,7 +22,7 @@ class Config {
     }
 
     static get numberOfUnitsPerSquad() {
-        if (numberOfUnitsPerSquad < 5) throw Error("Invalid number of units per squad!");
+        if (numberOfUnitsPerSquad < 5 || numberOfUnitsPerSquad > 10) throw Error("Invalid number of units per squad!");
         return numberOfUnitsPerSquad;
     }
 }

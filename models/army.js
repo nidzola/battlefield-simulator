@@ -6,6 +6,8 @@ class Army {
         this.squads = [];
         this.active = true;
         this.id = "Army: " + id;
+        this.selectedStrategy = Config.attackStrategy;
+
         this.init();
     }
     init() {
@@ -25,10 +27,10 @@ class Army {
                         let squad2Attack = squad2.attack();
 
                         if (squad1Attack > squad2Attack) {
-                            squad2.damage(squad1Attack);
+                            squad2.damage();
                             squad1.addExperience();
                         } else {
-                            squad1.damage(squad2Attack);
+                            squad1.damage();
                             squad2.addExperience();
                         }
                     }
@@ -42,6 +44,14 @@ class Army {
 
     isActive() {
         return this.active;
+    }
+
+    printUnitsHealth() {
+        for (let squad of this.squads) {
+            for (let unit of squad.units) {
+                console.log(this.id, squad.id, 'Health: ' + unit.health);
+            }
+        }
     }
 }
 
