@@ -5,6 +5,9 @@ class Squad {
     constructor() {
         this.units = [];
         this.active = true;
+        //TODO strategy
+        this.selectedStrategy = Config.attackStrategy;
+
         this.init();
     }
 
@@ -18,24 +21,32 @@ class Squad {
         return this.active;
     }
 
-    attach() {
+    attack() {
         //TODO
         let attackSum = 0;
+        let inactiveUnits = 0;
         for (let unit of this.units) {
-            if (unit instanceof Soldier) {
-                attackSum += unit.experience;
+            if (unit.isActive()) {
+                if (unit instanceof Soldier) {
+                    attackSum += unit.attack();
+                } else {
+                    attackSum += unit.attack();
+                }
             } else {
-                attackSum += unit.getSoldiersExperience();
+                inactiveUnits++;
             }
         }
+
+        if (inactiveUnits == this.units.length) this.active = false;
 
         return attackSum / this.units.length;
     }
 
-    damage() {
+    damage(damage) {
         //TODO
         for (let unit of this.units) {
-            unit.health--;
+            unit.health = unit.health - damage;
+            if (unit.health <= 0) unit.active = false;
         }
     }
 }
