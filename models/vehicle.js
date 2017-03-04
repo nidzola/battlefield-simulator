@@ -5,9 +5,9 @@ class Vehicle extends Unit {
     constructor(soldiers) {
         if (soldiers.length < 1 || soldiers.length > 3) throw new Error("Invalid vehicle operators number");
         this.soldiers = soldiers;
-        this.active = true;
+        // this.active = true;
         super(100, 2000);
-        this.buildEnergy()
+        this.health = this.buildHealth()
     }
 
     attack() {
@@ -22,7 +22,7 @@ class Vehicle extends Unit {
         let randomSoldierIndex = Helper.random(0, this.soldiers.length - 1);
 
         this.health = this.health - vehicleDamage;
-        if (this.health <= 0) this.active = false;
+        // if (this.health <= 0) this.active = false;
 
         let totalDeadSoldiers = 0;
         for (let i = 0; i < this.soldiers.length; i++) {
@@ -34,17 +34,17 @@ class Vehicle extends Unit {
                 }
 
                 if (this.soldiers[i].health <= 0)  {
-                    this.soldiers[i].active = false;
+                    // this.soldiers[i].active = false;
                     totalDeadSoldiers++;
                 }
             } else {
                 this.soldiers[i].health = 0;
-                this.soldiers[i].active = false;
+                // this.soldiers[i].active = false;
             }
         }
 
         if (totalDeadSoldiers == this.soldiers.length) {
-            this.active = false;
+            // this.active = false;
             this.health = 0;
         }
     }
@@ -57,7 +57,7 @@ class Vehicle extends Unit {
         return this.active;
     }
 
-    private buildEnergy() {
+    private buildHealth() {
         let totalSoldierHealth = this.getTotalSoldierHealth();
         return (totalSoldierHealth / this.soldiers.length) + this.health;
     }

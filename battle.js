@@ -8,8 +8,9 @@ class Battle {
     }
 
     init() {
+        console.log(Config.numberOfArmies);
         for(let i = 0; i < Config.numberOfArmies; i++) {
-            this.armies.push(new Army());
+            this.armies.push(new Army(i));
         }
     }
 
@@ -20,6 +21,7 @@ class Battle {
                 if (army.isActive()) {
                     for (let j = 0; j < this.armies.length; j++) {
                         if (i != j) {
+                            // console.log(army.id, this.armies[j].id);
                             army.attack(this.armies[j]);
                         }
                     }
@@ -30,9 +32,9 @@ class Battle {
         }
 
         console.log('Winner:', this.armies[0].squads[0].units);
+        console.log('Winner:', this.armies[0].id);
     }
 }
 
 let battle = new Battle();
-battle.init();
 battle.begin();

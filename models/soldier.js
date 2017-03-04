@@ -5,7 +5,6 @@ class Soldier extends Unit {
     constructor(experience) {
         if (experience > 50 || experience < 0) throw Error("Invalid experience value!");
         super(100, 100);
-        this.active = true;
         this.experience = experience || 0;
     }
 
@@ -24,7 +23,7 @@ class Soldier extends Unit {
     }
 
     isActive() {
-        return this.active;
+        return this.health > 0;
     }
 }
 

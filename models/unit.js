@@ -11,10 +11,6 @@ class Unit {
         console.log('Health is :' + this.health);
         console.log('Recharge is :' + this.recharge);
     }
-
-    isActive() {
-        return this.health > 0;
-    }
 }
 
 module.exports = Unit;
