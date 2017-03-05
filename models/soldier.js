@@ -2,10 +2,10 @@ const Unit = require('./unit');
 const Helper = require('../helper');
 
 class Soldier extends Unit {
-    constructor(experience) {
-        if (experience > 50 || experience < 0) throw Error("Invalid experience value!");
+    constructor(squad, id) {
         super(100, 100);
-        this.experience = experience || 0;
+        this.id = squad + ' -> Soldier: ' + id;
+        this.experience = 0;
     }
 
     addExperience() {

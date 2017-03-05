@@ -12,7 +12,7 @@ class Squad {
 
     init() {
         for (let i = 0; i < Config.numberOfUnitsPerSquad; i++) {
-            this.units.push(new Soldier());
+            this.units.push(new Soldier(this.id, i));
         }
         this.buildSquadTotalEnergy();
     }
@@ -26,7 +26,10 @@ class Squad {
     isActive() {
         let active = false;
         for (let unit of this.units) {
-            if (unit.health > 0) active = true;
+            if (unit.health > 0) {
+                active = true;
+                break;
+            }
         }
 
         return active;
