@@ -25,7 +25,7 @@ class Squad {
                 this.units.push(new Soldier(this.id, i));
             }
         }
-        // this.buildSquadTotalEnergy();
+        this.buildSquadTotalEnergy();
     }
 
     buildSquadTotalEnergy() {
@@ -47,11 +47,11 @@ class Squad {
     }
 
     attack() {
-        let attackSum = 0;
+        let attackProduct = 1;
         for (let unit of this.units) {
-            attackSum += unit.attack();
+            attackProduct *= unit.attack();
         }
-        return attackSum / this.units.length;
+        return Math.pow(attackProduct, 1/this.units.length)
     }
 
     damage() {

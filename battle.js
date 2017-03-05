@@ -19,7 +19,9 @@ class Battle {
             if (army.isActive()) {
                 for (let j = 0; j < this.armies.length; j++) {
                     if (i != j) {
-                        army.attack(this.armies[j]);
+                        if (this.armies[j].isActive()) {
+                            army.attack(this.armies[j]);
+                        }
                     }
                 }
             } else {
@@ -33,8 +35,20 @@ class Battle {
         }
     }
 }
-
+//
 for (let i = 0; i < 5; i++) {
     let battle = new Battle();
     battle.fight();
 }
+
+// attack().then((attack) => {
+//     console.log(attack);
+// })
+// function attack() {
+//     return new Promise(resolve => {
+//         setTimeout(() => {
+//             let attack = 15;
+//             resolve(attack);
+//         }, 2000)
+//     });
+// }
