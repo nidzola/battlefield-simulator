@@ -17,7 +17,9 @@ class Soldier extends Unit {
     }
 
     damage() {
-        return 0.05 + this.experience / 100;
+        let damage = 0.05 + this.experience / 100;
+        this.health = this.health - damage;
+        return damage;
     }
 
     isActive() {

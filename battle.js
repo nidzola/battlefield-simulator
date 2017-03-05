@@ -34,5 +34,7 @@ class Battle {
     }
 }
 
-let battle = new Battle();
-battle.fight();
+for (let i = 0; i < 5; i++) {
+    let battle = new Battle();
+    battle.fight();
+}

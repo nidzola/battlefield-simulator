@@ -19,11 +19,12 @@ class Army {
 
     attack(army) {
         let indexes = this.applyStrategy(army.squads);
+
         let squad1 = this.squads[indexes.squad1Index];
         let squad2 = army.squads[indexes.squad2Index];
-
         let squad1Attack = squad1.attack();
         let squad2Attack = squad2.attack();
+
         if (squad1Attack > squad2Attack) {
             squad2.damage();
             squad1.addExperience();
@@ -44,8 +45,8 @@ class Army {
             squad1Index = this.sortBy(this.squads);
             squad2Index = this.sortBy(squads);
         } else {
-            squad1Index = Helper.random(0, this.squads.length);
-            squad2Index = Helper.random(0, squads.length);
+            squad1Index = Helper.random(0, this.squads.length - 1);
+            squad2Index = Helper.random(0, squads.length - 1);
         }
 
         return {

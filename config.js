@@ -1,5 +1,5 @@
-const numberOfArmies = 2;
-const attackStrategy = 'weakest';
+const numberOfArmies = 10;
+const attackStrategy = 'random';
 const numberOfSquadsPerArmy = 2;
 const numberOfUnitsPerSquad = 5;
 const strategies = ['random', 'weakest', 'strongest'];

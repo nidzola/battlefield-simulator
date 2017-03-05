@@ -1,4 +1,5 @@
 const Config = require('../config');
+const Helper = require('../helper');
 const Soldier = require('./soldier');
 const Vehicle = require('./vehicle');
 
@@ -12,9 +13,19 @@ class Squad {
 
     init() {
         for (let i = 0; i < Config.numberOfUnitsPerSquad; i++) {
-            this.units.push(new Soldier(this.id, i));
+            let addVehicle = Helper.random(0, 1);
+            if (addVehicle) {
+                let numberOfSoldiers = Helper.random(1, 3);
+                let vehicleSoldiers = [];
+                for (let i = 0; i < numberOfSoldiers; i++) {
+                    vehicleSoldiers.push(new Soldier(this.id, i));
+                }
+                this.units.push(new Vehicle(vehicleSoldiers));
+            } else {
+                this.units.push(new Soldier(this.id, i));
+            }
         }
-        this.buildSquadTotalEnergy();
+        // this.buildSquadTotalEnergy();
     }
 
     buildSquadTotalEnergy() {
@@ -38,13 +49,8 @@ class Squad {
     attack() {
         let attackSum = 0;
         for (let unit of this.units) {
-            if (unit instanceof Soldier) {
-                attackSum += unit.attack();
-            } else {
-                attackSum += unit.attack();
-            }
+            attackSum += unit.attack();
         }
-
         return attackSum / this.units.length;
     }
 
@@ -53,12 +59,7 @@ class Squad {
         for (let unit of this.units) {
             damageAccumulation += unit.damage();
         }
-
-        for (let unit of this.units) {
-            unit.health = unit.health - damageAccumulation;
-            this.totalEnergy = this.totalEnergy - damageAccumulation;
-            if (unit.health < 0) unit.health = 0;
-        }
+        this.totalEnergy = this.totalEnergy - damageAccumulation;
     }
 
     addExperience() {
