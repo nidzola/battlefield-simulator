@@ -47,11 +47,11 @@ class Vehicle extends Unit {
     }
 
     gavg() {
-        let sumOfAttack = 0;
+        let productOfAttack = 1;
         for (let soldier of this.soldiers) {
-            sumOfAttack += soldier.attack();
+            productOfAttack *= soldier.attack();
         }
-        return sumOfAttack / this.soldiers.length;
+        return Math.pow(productOfAttack, 1/this.soldiers.length)
     }
 
     isActive() {
