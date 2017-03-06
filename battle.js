@@ -1,54 +1,29 @@
 let Config = require('./config');
-let Army = require('./models/army');
+let Army = require('./models/Army');
 
 class Battle {
     constructor() {
         this.armies = [];
-        this.init();
-    }
-
-    init() {
         for (let i = 0; i < Config.numberOfArmies; i++) {
             this.armies.push(new Army(i));
         }
     }
 
     fight() {
-        for (let i = 0; i < this.armies.length; i++) {
-            let army = this.armies[i];
-            if (army.isActive()) {
-                for (let j = 0; j < this.armies.length; j++) {
-                    if (i != j) {
-                        if (this.armies[j].isActive()) {
-                            army.attack(this.armies[j]);
-                        }
-                    }
-                }
-            } else {
-                this.armies.splice(i, 1);
+        console.log('Battle started...');
+        while(this.armies.length > 1) {
+            for(let i = 0; i < this.armies.length; i++) {
+                this.armies[i].attack(this.armies.filter(a => a != this.armies[i]));
             }
+            this.armies = this.armies.filter(a => a.isActive());
         }
-        if (this.armies.length > 1) {
-            this.fight();
-        } else {
-            console.log('Winner:', this.armies[0].id);
-        }
+        console.log('Winner Army: ', this.armies[0].id);
     }
 }
-//
-for (let i = 0; i < 5; i++) {
+
+for (let i = 0; i < Config.totalBattles; i++) {
     let battle = new Battle();
     battle.fight();
 }
 
-// attack().then((attack) => {
-//     console.log(attack);
-// })
-// function attack() {
-//     return new Promise(resolve => {
-//         setTimeout(() => {
-//             let attack = 15;
-//             resolve(attack);
-//         }, 2000)
-//     });
-// }
+process.exit();
