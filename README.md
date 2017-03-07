@@ -1,7 +1,7 @@
 ## Battlefield simulator
 
 Battlefield simulator v1.0,
-tested with: Node.js v6.10.0
+tested with: Node.js v6.10.0 (ECMA Script 6)
 
 ## Usage
 
