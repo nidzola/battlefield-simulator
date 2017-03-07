@@ -11,7 +11,7 @@ git clone https://github.com/nidzola/battlefield-simulator.git
 cd battlefield-simulator
 
 # run it:
-npm battle.js
+node battle.js
 
 # optional: 
 Update config.js
