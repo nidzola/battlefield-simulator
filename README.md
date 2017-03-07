@@ -12,10 +12,10 @@ cd battlefield-simulator
 
 # run it:
 node battle.js
-
-# optional: 
-Update config.js
 ```
+
+## Settings
+To change settings, you can update config.js file located in root of the project
 
 ## Contributing
 
