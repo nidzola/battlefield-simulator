@@ -1,7 +1,7 @@
 ## Battlefield simulator
 
 Battlefield simulator v1.0,
-tested with: Node.js v6.10.0
+tested with: Node.js v6.10.0 (ECMA Script 6)
 
 ## Usage
 
@@ -11,11 +11,11 @@ git clone https://github.com/nidzola/battlefield-simulator.git
 cd battlefield-simulator
 
 # run it:
-npm battle.js
-
-# optional: 
-Update config.js
+node battle.js
 ```
+
+## Settings
+To change settings, you can update config.js file located in root of the project
 
 ## Contributing
 
