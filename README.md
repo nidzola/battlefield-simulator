@@ -12,6 +12,9 @@ cd battlefield-simulator
 
 # run it:
 node battle.js
+
+# or run it with params:
+node battle.js armies=2 squads_per_army=2 units_per_squad=5
 ```
 
 ## Settings
