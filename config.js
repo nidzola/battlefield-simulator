@@ -1,36 +1,51 @@
-const numberOfArmies = 10;
-const attackStrategy = 'random';
-const numberOfSquadsPerArmy = 2;
-const numberOfUnitsPerSquad = 5;
-const totalBattles = 5;
-
 const strategies = ['random', 'weakest', 'strongest'];
 
-class Config {
+let numberOfArmies = 2;
+let numberOfSquadsPerArmy = 2;
+let numberOfUnitsPerSquad = 5;
 
-    static get numberOfArmies() {
-        if (numberOfArmies < 2) throw Error("Invalid number of armies!");
+/**
+ * Class representing a config.
+ */
+class Config {
+    constructor() {}
+
+    /* Setter for number of armies for battle. */
+    static setNumberOfArmies(number) {
+        if (number < 2) throw Error("Invalid number of armies!");
+        numberOfArmies = number;
+    }
+
+    /* Getter of number of armies for battle. */
+    static getNumberOfArmies() {
         return numberOfArmies;
     }
 
-    static get attackStrategy() {
-        if (strategies.indexOf(attackStrategy) == -1) throw Error("Invalid strategy selected!");
-        return attackStrategy;
+    /* Setter for number of squads per army. */
+    static setNumberOfSquadsPerArmy(number) {
+        if (number < 2) throw Error("Invalid number of squads per army!");
+        numberOfSquadsPerArmy = number;
     }
 
-    static get numberOfSquadsPerArmy() {
-        if (numberOfSquadsPerArmy < 2) throw Error("Invalid number of squads per army!");
+    /* Getter for number of squads per army. */
+    static getNumberOfSquadsPerArmy() {
         return numberOfSquadsPerArmy;
     }
 
-    static get numberOfUnitsPerSquad() {
-        if (numberOfUnitsPerSquad < 5 || numberOfUnitsPerSquad > 10) throw Error("Invalid number of units per squad!");
+    /* Setter for number of units per squad. */
+    static setNumberOfUnitsPerSquad(number) {
+        if (number < 5 || number > 10) throw Error("Invalid number of units per squad!");
+        numberOfSquadsPerArmy = number;
+    }
+
+    /* Getter for number of units per squad. */
+    static getNumberOfUnitsPerSquad() {
         return numberOfUnitsPerSquad;
     }
 
-    static get totalBattles() {
-        if (totalBattles < 1) throw Error("Invalid battle number, minimum is 1!");
-        return totalBattles;
+    /* Getter for array for strategies. */
+    static get strategies() {
+        return strategies;
     }
 }
 
