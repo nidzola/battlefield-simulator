@@ -26,7 +26,7 @@ Contributions welcome; Please submit all pull requests against the master branch
 
 ## Author
 
-Nikola Zivkovic <zivkovic.nikola.zn@gmail.com> or <zivko9127@gmail.com> http://github.com/nidzola
+Nikola Zivkovic <zivko9127@gmail.com> http://github.com/nidzola
 
 ## License
 
